@@ -1,14 +1,18 @@
 const express = require('express')
+const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const path = require('path')
-const app = new express()
 
-app.use(cors)
+const URL = `mongodb+srv://ido:dozen12@cluster0.8yoes.mongodb.net/realestatedb?retryWrites=true&w=majority`
 
-// mongoose.connect(URL, { useNewUrlParse: true }) //Check reason
+app.use(cors())
+app.use(express.json())
 
-app.get('http://localhost:8080/', (req, res) => {
+mongoose.connect(URL, { useNewUrlParser: true }) //Check reason
+
+app.get('/', (req, res) => {
+  console.log(req)
   res.json('allah')
 })
 
